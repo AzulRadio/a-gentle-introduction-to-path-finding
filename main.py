@@ -19,8 +19,8 @@ width = 808
 height = 448
 step = 50
 p = 0.01 # probability of exploring towards the goal
-start = np.array((400,800))
-end = np.array((10, 10))
+start = np.array((400, 10))
+end = np.array((10, 800))
 
 EXPLORED = 2
 
@@ -58,19 +58,20 @@ if manhattan_d(end, start) > step:
         # if close enough, break
         if manhattan_d(end, (curr[0], curr[1])) <= step \
            and can_connect((curr[0], curr[1]), end, map):
+            # truncate vertices list
+            vertices = vertices[:end_i]
+            vertices = np.vstack((vertices, end))
             print('target reached')
             found_flag = 1
             break
 
 edges = np.array(edges)
-path = find_path(edges, vertices[:end_i])
+path = find_path(edges, vertices)
 
 t2 = time.time()
 print(t2 - t1)
 
 print(path)
-
-# TODO, fix grow
 
 # create another map, p for print
 pmap = cv2.resize(field, (808, 448))

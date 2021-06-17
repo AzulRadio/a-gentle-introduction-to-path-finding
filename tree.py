@@ -44,14 +44,14 @@ def grow_rand(pt, step):
 # return: coord of the grown pt
 def grow_target(pt, goal, step):
     tar_x, tar_y = goal
-    dx = np.abs(tar_x - pt[0])
-    dy = np.abs(tar_y - pt[1])
+    dx = tar_x - pt[0]
+    dy = tar_y - pt[1]
     # in case of dx + dy == 0, return invalid
     if (dx + dy) == 0:
         return (-1, -1)
     else:
-        x = np.int(step * dx / (dx + dy) + 0.5 + pt[0])
-        y = np.int(step * dy / (dx + dy) + 0.5 + pt[1])
+        x = np.int(step * dx / (abs(dx) + abs(dy)) + 0.5 + pt[0])
+        y = np.int(step * dy / (abs(dx) + abs(dy)) + 0.5 + pt[1])
     return (x,y)
 
 
@@ -125,7 +125,7 @@ if __name__ == '__main__':
     h = 600
     config_map = np.zeros((h,w), dtype = np.int8)
     pt = (590, 550)
-    goal = (w, h)
+    goal = (0, 0)
     step = 60
     x, y = grow_target(pt, goal, step)
     print((x,y))
