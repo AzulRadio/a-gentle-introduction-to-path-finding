@@ -8,7 +8,7 @@ Required lib:
 ``` Python
 numpy
 matplotlib.pyplot
-cv2 #(only used for map image reading)
+cv2
 ```
 
 <img src="field.png" width="400" height="250" alt="field" align=center>
@@ -22,3 +22,11 @@ The RRT tree
 The RRT path
 
 ![rrt_path](resource/rrt_path.png)
+
+The DFS path
+
+<img src="resource/dfs.png" width="400" height="250" alt="dfs" align=center>
+
+The Astar path
+
+<img src="resource/astar.png" width="400" height="250" alt="astar" align=center>
